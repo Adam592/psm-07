@@ -27,5 +27,24 @@ Total: {{ total }} zł
             </div>
         </div>
     </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                product: 'book',
+                unitPrice: 17,
+                quantity: 3,
+                vatRate: 23
+            },
+            computed: {
+                amount() {
+                    return this.unitPrice * this.quantity;
+                },
+                total() {
+                    return (this.amount * (1 + this.vatRate / 100)).toFixed(2);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
